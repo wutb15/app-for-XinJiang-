@@ -1,5 +1,5 @@
 #Expecting User Interface
-- When open the web:
+- When open the web,enter main menu:
 
   ```plain
   Please Check in:
@@ -29,10 +29,11 @@
         - if the information exist:
           
           
-          '''plain
+          ```plain
           {{show the information}}
           [Edit button]
           [Commit button]
           [Cancel button]
           ```
+  - on every page there is a backtoMainmeu button
   
