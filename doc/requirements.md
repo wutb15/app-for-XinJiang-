@@ -42,6 +42,7 @@
 ## Language
 - We plan to use PHP to create the web and Mysql to deal with the Database.
 - We use MVC design mode for this project
+- Now we just should study
 
 
 ## Algorithm
