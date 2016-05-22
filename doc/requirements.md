@@ -35,5 +35,5 @@
           [Commit button]
           [Cancel button]
           ```
-  - on every page there is a backtoMainmeu button
+- on every page there is a backtoMainmeu button
   
