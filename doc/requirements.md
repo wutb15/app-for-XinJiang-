@@ -17,10 +17,9 @@
     [view information working area]
     ```
     - If choose load information
-    *load information and judge*
       - If the information doesn't exist:
       
-          '''plain
+          ```plain
           {{show the information}}
           [Add information button]
           [Edit button]
