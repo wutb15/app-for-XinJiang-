@@ -1,4 +1,5 @@
-#Expecting User Interface
+#Requirements
+##Expecting user interface
 - When open the web,enter main menu:
 
   ```plain
@@ -36,4 +37,10 @@
           [Cancel button]
           ```
 - on every page there is a backtoMainmeu button
-  
+##Language
+-We plan to use PHP to create the web and Mysql to deal with the Database.
+-We use MVC design mode for this project
+
+
+##Algorithm
+
