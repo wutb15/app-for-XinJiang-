@@ -44,12 +44,14 @@
     - if find ,to (show-information-view)
      
     - otherwise:
+    
       ```plain
       
       [Not-Find-View]
       
       ```
 - show-information-view:
+
   ```plain
           {{show the information form}}(unavailable to edit,readonly)
           [Edit]
