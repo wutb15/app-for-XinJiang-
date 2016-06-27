@@ -1,19 +1,21 @@
 #Design of the project
-##The design for the mysql database
+##The design for the Mysql Database and the Models
 
 - contains three tables:
+
    ```plain
    table users
    (userid int unsigned not null auto_increment primary key,
-    username char(50) not null,
-    password char(50) not null
+    username varchar not null,
+    password varchar not null
    )
    
-   table people
+   table peoplecondition
    (
-    Idcardid char(20) not null primary key,
-    sex bool,
+    Idcardid string not null primary key,
+    sex enum ('male','female'),
     homeid int,
+	birthday date
    
    )
    
@@ -21,7 +23,15 @@
    (
     homeid int unsigned not null auto_increment primary key,
     Income float(6,2),
+	homelocation varchar
    )
-   
+   (waited to be specialized)
    
    ```
+- this three tables are correspond to three models,the UserModel,the PeopleConditionModel<br>
+the HomeConditionModel
+
+##The design for the Routes and the Controllers
+- The UserController
+ - the authentication function
+ - the registration function(use )
