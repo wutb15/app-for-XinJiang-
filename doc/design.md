@@ -10,29 +10,29 @@
     'password' varchar not null
    )
    
-   table peoplecondition
+   table individualcondition
    (
     'Idcardid' varchar(19) not null primary key//验证numeric，还有位数,
     'sex enum '('male','female'),
     'home_id' int  unsigned           
 	'birthday' date
-	'income' float(6,2)
+	'income' decimal
 	foreign key(homeid) references 'homecondition''homeid'
    
    )
    
-   table homecondition
+   table familycondition
    (
     'home_id' int unsigned not null auto_increment primary key,
 	'homename' varchar(60)//一户人家的称呼
 	'homelocation' varchar
 	'homelevel'  enum('pool','medium','rich')//自动由homeincome得出,不可填
-	'homeincome' float(6,2)//不可填，直接由所含people的income得出
+	'homeincome' decimal//不可填，直接由所含people的income得出
    )
 	table order
 	(
 		'orderid' int unsigned not null auto_increment primary key,
-		'ordertype' enum('search','add','edit','rm')
+		'ordertype' enum('search','add','edit','delete')
 		'user_id' int unsigned foreign key references 'users''useid'
 		'handleID' varchar
 		//加上timestamp(created at)
@@ -43,7 +43,7 @@
 <br>
 the HomeConditionModel and the OrderModel<br>
 //均使用EloquentORM管理,简要关系如下
-- home 与 people一对多
+- family 与 individual一对多
 - user 与 order 一对多
 ##The design for the Routes and the Controllers
 - The UserController(使用laravel内置验证系统)
