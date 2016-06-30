@@ -10,9 +10,11 @@ class Order extends Model
     protected $fillable=[
         'handleId','ordertype','user_id'
     ];
+    protected $table='morders';
     //
     public function user()
     {
-        return $this->belongsTo('App/User','user_id','id');
+        return $this->belongsTo('App\User','user_id','id');
     }
+
 }

@@ -12,13 +12,12 @@ class CreateOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('morders', function (Blueprint $table) {
             $table->increments('id');
             $table->string('handleID');
             $table->enum('ordertype',['search','add','edit','delete']);
             $table->integer('user_id')->unique();
             $table->timestamps();
-            $table->foreign('handleID')->referecences('Idcardid')->on('individualconditions');
         });
     }
 

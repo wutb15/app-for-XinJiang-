@@ -12,5 +12,10 @@ class Individualcondition extends Model
         'birthday','income','sex','home_id'
     ];
     public  $timestamps=false;
+
+    public function family()
+    {
+        return $this->belongsTo('App\Familyconditon','family_id');
+    }
     //
 }
