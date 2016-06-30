@@ -26,8 +26,6 @@
     'home_id' int unsigned not null auto_increment primary key,
 	'homename' varchar(60)//一户人家的称呼
 	'homelocation' varchar
-	'homelevel'  enum('pool','medium','rich')//自动由homeincome得出,不可填
-	'homeincome' decimal//不可填，直接由所含people的income得出
    )
 	table order
 	(
