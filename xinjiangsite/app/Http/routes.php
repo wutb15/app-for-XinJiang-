@@ -18,3 +18,15 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('/search','SearchHandleController@handle');
+
+Route::get('/show/{$id}','DataController@show');
+
+Route::post('/show/add','AddHandleController@handle');
+
+Route::post('/update','UpdateHandleController@handle');
+
+Route::post('/show/delete','DeleteHandleController@handle');
+
+
