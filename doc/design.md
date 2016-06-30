@@ -5,12 +5,12 @@
 
    ```plain
    table users
-   ('user_id' int unsigned not null auto_increment primary key,
+   ('id' int unsigned not null auto_increment primary key,
     'username' varchar not null,
     'password' varchar not null
    )
    
-   table individualcondition
+   table individualconditions
    (
     'Idcardid' varchar(19) not null primary key//验证numeric，还有位数,
     'sex enum '('male','female'),
@@ -21,25 +21,25 @@
    
    )
    
-   table familycondition
+   table familyconditions
    (
     'home_id' int unsigned not null auto_increment primary key,
 	'homename' varchar(60)//一户人家的称呼
 	'homelocation' varchar
    )
-	table order
+	table orders
 	(
-		'orderid' int unsigned not null auto_increment primary key,
+		'id' int unsigned not null auto_increment primary key,
 		'ordertype' enum('search','add','edit','delete')
-		'user_id' int unsigned foreign key references 'users''useid'
-		'handleID' varchar
+		'user_id' int unsigned foreign key references 'users''user_id'
+		'handleID' varchar//也为foreignkey
 		//加上timestamp(created at)
 	)
    
    ```
-- these four tables are correspond to three models,the UserModel,the PeopleConditionModel
+- these four tables are correspond to three models,the UserModel,the IndividualConditionModel
 <br>
-the HomeConditionModel and the OrderModel<br>
+the FamilyConditionModel and the OrderModel<br>
 //均使用EloquentORM管理,简要关系如下
 - family 与 individual一对多
 - user 与 order 一对多
