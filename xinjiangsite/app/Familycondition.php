@@ -18,8 +18,9 @@ class Familycondition extends Model
     ];
 
 
-    protected $mFamilyIncomePerMonth;
-    protected $mFamilyLevel;
+
+    //构建函数
+
 
 
 
@@ -27,33 +28,16 @@ class Familycondition extends Model
         return $this->hasMany('App\Individualcondition','family_id');
     }
 
-    private  function calFamilyIncome(){
+    public  function returnFamilyIncome(){
         $members= $this->members();
-        $this->mFamilyIncomePerMonth=0.0;
+        $mFamilyIncomePerMonth=0.0;
         foreach( $members as $member)
-            $this->mFamilyIncomePerMonth=$this->mFamilyIncomePerMonth+$member->income;
-    }
-    private  function calFamilyLevel(){
-        if ($this->mFamilyIncomePerMonth <= 1000)
-            $this->mFamilyLevel = "非常贫困";
-        else if ($this->mFamilyIncomePerMonth <= 3000)
-            $this->mFamilyLevel = "较为贫困";
-        else if ($this->mFamilyIncomePerMonth <= 4000)
-            $this->mFamilyLevel = "一般";
-        else  $this->mFamilyLevel = "富裕";
+            $mFamilyIncomePerMonth=$mFamilyIncomePerMonth+$member->income;
+        return $mFamilyIncomePerMonth;
     }
 
 
 
-    public  function getFamilyIncome(){
-        return $this->mFamilyIncomePerMonth;
-    }
-
-
-    public  function getFamilyLevel()
-    {
-      return $this->mFamilyLevel;
-    }
 
     }
 

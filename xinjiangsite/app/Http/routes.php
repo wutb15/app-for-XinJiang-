@@ -17,16 +17,31 @@ Route::get('/', function () {
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home','HomeController@index');
 
-Route::get('/search','SearchHandleController@handle');
+Route::get('/individual/search','IndividualController@search');
 
-Route::get('/show/{$id}','DataController@show');
+Route::get('/individual/show/{$id}','IndividualController@show');
 
-Route::post('/show/add','AddHandleController@handle');
+Route::post('/individual/add','IndividualController@create');
 
-Route::post('/update','UpdateHandleController@handle');
+Route::post('/individual/update','IndividualController@edit');
 
-Route::post('/show/delete','DeleteHandleController@handle');
+Route::post('/individual/delete','IndividualController@delete');
+
+Route::post('/individual/move','IndividualController@move');
+
+
+Route::get('/family/search','FamilyController@search');
+
+Route::get('/family/show/{$id}','FamilyController@show');
+
+Route::post('/family/add','FamilyController@create');
+
+Route::post('/family/update','FamilyController@edit');
+
+Route::post('/family/delete','FamilyController@delete');
+
+
 
 

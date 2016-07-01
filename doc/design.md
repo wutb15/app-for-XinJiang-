@@ -46,7 +46,7 @@ the FamilyConditionModel <br>
 	-	public function create(Request $request){}
 	-	public function edit(Request $request){}//不可以变动家庭
 	-   public function delete($id){}
-	-   public function move($Idcardid,$formerfamily,$nowfamily){}//唯一作用是移动,迁户口
+	-   public function move(Request $request){}//唯一作用是移动,迁户口
 	-   public function show($id){}//个人精确信息
 	-   public function search(Request $request){}
 <br>内部接口自由确定，至少包含一个show()的私有函数
