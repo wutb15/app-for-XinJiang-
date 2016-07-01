@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-class UpdateHandleController extends HandleController
+class FamilyController extends Controller
 {
     //
 }
