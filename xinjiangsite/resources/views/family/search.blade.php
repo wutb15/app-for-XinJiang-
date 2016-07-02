@@ -8,6 +8,7 @@
  @extends('layouts.app')
 
 @section('content')
+
 <form role="form" action="{{url('family/search')}}" method="post">
     <div class="form-group">
         <label for="home_id">家庭编号</label>
@@ -36,3 +37,4 @@
     </div>
 
 </form>
+@endsection

@@ -11,3 +11,6 @@ Homestead.json
 #ide
 
 _ide_helper.php
+
+#composer
+composer.lock
