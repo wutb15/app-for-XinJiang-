@@ -53,10 +53,10 @@ class FamilyController extends Controller
     }
     
     
+
     public function show($id){
         return view('family.show')->with(Familycondition::with('members'))->find($id);
-    }//一个家庭信息，外加成员简略信息如身份证号
-
+    }//一个家庭信息，外加成员简略信息如身份证
 
     public function search(Request $request){
         $fam_id =$request->input('id');

@@ -49,7 +49,6 @@ the FamilyConditionModel <br>
 	-   public function move(Request $request){}//唯一作用是移动,迁户口
 	-   public function show($id){}//个人精确信息
 	-   public function search(Request $request){}
-<br>内部接口自由确定，至少包含一个show()的私有函数
 
 ##The View of the sites
 - The welcome view(没有表单,uri是('/'))
