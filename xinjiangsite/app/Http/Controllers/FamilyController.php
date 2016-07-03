@@ -26,15 +26,17 @@ class FamilyController extends Controller
             $family->$field = $request->get($field);
         }
         $family->save();
+        return redirect('success');
     }
     
     
     public function delete($id){
         $result=Familycondition::find($id);
-        if (!$result) return redirect('/failure')->withErrors("找不到信息!");
+        if (!$result)
+            return redirect('/failure')->withErrors("找不到信息!");
         else{
             $result->delete();
-            return redirect('/family/show/{id}');
+            return redirect('success');
         }   //delete,return
     }
     
@@ -42,26 +44,31 @@ class FamilyController extends Controller
     public function edit(Request $request){
         $fam_id =$request->input('id');
         $result=Familycondition::find($fam_id);
-        if (!$result) return redirect('/failure')->withErrors("找不到信息!");
-        else{
-            foreach (array_keys($this->fields) as $field){
+        if (!$result)
+            return redirect('/failure')->withErrors("找不到信息!");
+        else
+        {
+            foreach (array_keys($this->fields) as $field)
+            {
                 $result->$field = $request->input($field);
             }
             $result->save();
-            return redirect('/family/show/{id}');
+            return redirect()->route('family/show',['id'=>$result->family_id]);
         }
     }
     
     
 
     public function show($id){
-        return view('family.show')->with(Familycondition::with('members'))->find($id);
+        return view('family.show')->with('family',Familycondition::find($id)->with('members'));
     }//一个家庭信息，外加成员简略信息如身份证
 
     public function search(Request $request){
         $fam_id =$request->input('id');
         $result=Familycondition::find($fam_id);
-        if (!$result)  return redirect('/failure')->withErrors("找不到信息!");
-        else return redirect('/family/show/{id}');        //待定
+        if (!$result)
+            return redirect('/failure')->withErrors("找不到信息!");
+        else
+            return redirect()->route('family/show',['id'=>$result->family_id]);        //待定
     }//
 }
