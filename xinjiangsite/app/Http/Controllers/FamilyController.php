@@ -23,7 +23,7 @@ class FamilyController extends Controller
     public function create(Request $request){
         $family = new Familycondition;
         foreach (array_keys($this->fields) as $field){
-            $family->$field = $request->get($field);
+            $family->$field = $request->input($field);
         }
         $family->save();
         return redirect('success');
@@ -37,10 +37,10 @@ class FamilyController extends Controller
         else{
             $result->delete();
             return redirect('success');
-        }   //delete,return
+        }
     }
-    
-    
+
+
     public function edit(Request $request){
         $fam_id =$request->input('id');
         $result=Familycondition::find($fam_id);
@@ -69,6 +69,6 @@ class FamilyController extends Controller
         if (!$result)
             return redirect('/failure')->withErrors("找不到信息!");
         else
-            return redirect()->route('family/show',['id'=>$result->family_id]);        //待定
+            return redirect()->route('family/show',['id'=>$result->family_id]);       
     }//
 }
