@@ -25,13 +25,13 @@ Route::get('/individual/search', function(){
     return view('individual.search');
 })->middleware('auth');
 
-Route::get('/individual/show/{$id}','IndividualController@show');
+Route::get('/individual/show/{id?}','IndividualController@show');
 
 Route::post('/individual/add','IndividualController@create');
 
 Route::post('/individual/update','IndividualController@edit');
 
-Route::post('/individual/delete','IndividualController@delete');
+Route::post('/individual/delete/{id}','IndividualController@delete');
 
 Route::post('/individual/move','IndividualController@move');
 
@@ -45,13 +45,15 @@ Route::get('/family/search',function(){
     return view('family.search');
 })->middleware('auth');
 
-Route::get('/family/show/{$id}','FamilyController@show');
+Route::get('/family/show/{id}','FamilyController@show');
 
 Route::post('/family/add','FamilyController@create');
+Route::get('family/add',function(){});
+
 
 Route::post('/family/update','FamilyController@edit');
 
-Route::post('/family/delete','FamilyController@delete');
+Route::post('/family/delete/{id}','FamilyController@delete');
 
 
 

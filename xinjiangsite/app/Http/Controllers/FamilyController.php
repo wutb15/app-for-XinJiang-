@@ -42,7 +42,7 @@ class FamilyController extends Controller
 
 
     public function edit(Request $request){
-        $fam_id =$request->input('id');
+        $fam_id =$request->input('family_id');
         $result=Familycondition::find($fam_id);
         if (!$result)
             return redirect('/failure')->withErrors("找不到信息!");

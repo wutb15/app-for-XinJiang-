@@ -16,6 +16,7 @@ class IndividualController extends Controller
         'family_id' => 0,
         'birthday' => '',
         'income' => 0,
+        'name' =>''
     ];
     public function __construct()
     {
