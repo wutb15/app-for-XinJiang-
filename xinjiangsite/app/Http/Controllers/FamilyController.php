@@ -10,7 +10,6 @@ use App\Http\Requests;
 class FamilyController extends Controller
 {
     protected $fields = [
-        'family_id' => 0,
         'family_name' => '',
         'familylocation' => '',
     ];
@@ -25,8 +24,14 @@ class FamilyController extends Controller
         foreach (array_keys($this->fields) as $field){
             $family->$field = $request->input($field);
         }
-        $family->save();
-        return redirect('success');
+        if($family->save())
+        {
+            return redirect('success');
+        }
+        else
+        {
+            return redirect('failure');
+        }
     }
     
     
@@ -41,20 +46,23 @@ class FamilyController extends Controller
     }
 
 
-    public function edit(Request $request){
+    public function edit(Request $request)
+    {
         $fam_id =$request->input('family_id');
         $result=Familycondition::find($fam_id);
-        if (!$result)
-            return redirect('/failure')->withErrors("找不到信息!");
-        else
-        {
-            foreach (array_keys($this->fields) as $field)
+        foreach (array_keys($this->fields) as $field)
             {
                 $result->$field = $request->input($field);
             }
-            $result->save();
-            return redirect()->route('family/show',['id'=>$result->family_id]);
+        if ($result->save())
+            {
+                return redirect()->back();
+            }
+        else
+        {
+            return redirect('failure');
         }
+
     }
     
     
@@ -65,10 +73,7 @@ class FamilyController extends Controller
 
     public function search(Request $request){
         $fam_id =$request->input('id');
-        $result=Familycondition::find($fam_id);
-        if (!$result)
-            return redirect('/failure')->withErrors("找不到信息!");
-        else
-            return redirect()->route('family/show',['id'=>$result->family_id]);       
+        $result=Familycondition::findOrFail($fam_id);
+        return redirect()->route('family/show',['id'=>$result->family_id]);
     }//
 }

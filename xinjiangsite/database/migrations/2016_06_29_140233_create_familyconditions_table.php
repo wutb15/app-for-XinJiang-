@@ -14,9 +14,8 @@ class CreateFamilyconditionsTable extends Migration
     {
         Schema::create('familyconditions', function (Blueprint $table) {
             $table->increments('family_id');
-            $table->string('family_name',60)->unique();
+            $table->string('family_name',60)->default('');
             $table->string('family_location')->default('');
-            $table->timestamps();
         });
     }
 

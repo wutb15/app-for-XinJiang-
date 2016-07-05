@@ -11,7 +11,7 @@ use App\Http\Requests;
 class IndividualController extends Controller
 {
     protected $fields = [
-        'IDcardid' => '',
+        'Idcardid' => '',
         'sex enum' => '',
         'family_id' => 0,
         'birthday' => '',
@@ -58,23 +58,28 @@ class IndividualController extends Controller
     
     public function delete($id){
         $result=Individualcondition::find($id);
-        if (!$result)
-            return redirect('/failure')->withErrors("找不到信息!");
-        else{
-            $result->delete();
+        if($result->delete())
+        {
             return redirect('success');
+        }
+        else
+        {
+            return redirect('failure')->withErrors('删除失败');
         }
     }
     
     public function move(Request $request){
-        $id = $request->input('family_id');
-        $search = Familycondition::find($id);
-        if ($search) {
-            $search->family_id = $request->input('new_family_id');
-            $search->save();
+        $search=Individualcondition::find($request->input('Idcardid'));
+        $target=Familycondition::findOrFail($request->input('family_id'));
+        $search->family_id = $request->input('family_id');
+        if($search->save())
+        {
             return redirect('success');
         }
-        else return redirect('/failure')->withErrors("找不到信息!");
+        else
+        {
+            return redirect('failure')->withErrors('保存失败');
+        }
     }//唯一作用是移动,迁户口
     
     public function show($id){
@@ -83,11 +88,8 @@ class IndividualController extends Controller
     
     public function search(Request $request){
         $ind_id =$request->input('id');
-        $result=Individualcondition::find($ind_id);
-        if (!$result)
-            return redirect('/failure')->withErrors("找不到信息!");
-        else
-            return redirect()->route('individual/show',['id'=>$result->IDcardid]);
+        $result=Individualcondition::findOrFail($ind_id);
+        return redirect()->route('individual/show',['id'=>$result->IDcardid]);
     }
     //
 }
