@@ -69,8 +69,21 @@
         </div>
     </div>
 </nav>
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-default">
+                <div class="panel-heading">欢迎</div>
 
-@yield('content')
+                <div class="panel-body">
+                    登录成功！
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 </body>
 </html>
