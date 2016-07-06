@@ -18,7 +18,7 @@ class CreateIndividualconditionsTable extends Migration
             $table->dateTime('birthday');
             $table->decimal('income');
             $table->string('name',60);
-            $table->enum('sex',['male','female']);
+            $table->tinyInteger('sex');
             $table->integer('family_id')->unsigned();
         });
     }

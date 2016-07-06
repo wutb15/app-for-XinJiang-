@@ -28,8 +28,8 @@ Route::get('/individual/search', function(){
 Route::get('/individual/show/{id}','IndividualController@show');
 
 Route::post('/individual/add','IndividualController@create');
-Route::get('individual/add',function(){
-    return view('individual.create');
+Route::get('individual/{id}/add',function($id){
+    return view('individual.create')->with('family_id',$id);
 });
 
 Route::post('/individual/update','IndividualController@edit');

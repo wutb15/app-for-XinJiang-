@@ -8,8 +8,8 @@
     <title>贫困人口管理系统</title>
 
     <!-- Fonts -->
-    //   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
-    //   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
 
     <!-- Styles -->
     <link href="//cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
@@ -48,7 +48,7 @@
 
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}">
-                Laravel
+                信息系统
             </a>
         </div>
 
@@ -57,11 +57,14 @@
             <ul class="nav navbar-nav">
                 <li><a href="{{ url('/home') }}">主页</a></li>
                 @if(Auth::guest())
-                    <li><a href="{{url('/login)}}">搜索信息</a></li>
+                    <li><a href="{{url('/login')}}">搜索家庭信息</a></li>
                     <li><a href="{{url('/login')}}">新建家户</a></li>
+                    <li><a href="{{url('/login')}}">搜索个人信息</a></li>
                 @else
-                    <li><a href="{{url('/search')}}">搜索信息</a></li>
+                    <li><a href="{{url('family/search')}}">搜索家庭信息</a></li>
                     <li><a href="{{url('/create')}}">新建家户</a></li>
+                    <li><a href="{{url('family/search')}}">搜索个人信息</a></li>
+
                 @endif
             </ul>
 

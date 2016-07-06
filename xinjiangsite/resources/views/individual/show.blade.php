@@ -23,18 +23,30 @@
                 <div class="col-md-6">
                     <label for="sex">性别</label>
                     <select class="form-control" name="sex" id="sex">
-                        <option>男</option>
-                        <option>女</option>
+                        @if($individual->sex==0)
+                            <option value="0" selected>男</option>
+                            <option value="1">女</option>
+                        @else
+                            <option value="0" >男</option>
+                            <option value="1" selected>女</option>
+                        @endif
+
                     </select>
                 </div>
 
             </div>
             <div class="row">
-              //TODO date
+                    <label class="col-xs-3 control-label" for="date">生日</label>
+                    <div class="col-xs-5 date">
+                        <div class="input-group input-append date" id="datePicker">
+                            <input type="text" class="form-control" name="birthday" id="date" value="{{$individual->birthday}}">
+                            <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+                    </div>
 
             </div>
             <div class="row">
-
+                <input type="hidden" name="family_id" value="{{$individual->family_id}}">
             </div>
 
             <div class="row">
@@ -48,27 +60,17 @@
         </form>
         <div class="row">
 
-            <form role="form" method="post" action="{{route('family/delete',['id'=>$family->family_id])}}">
+            <form role="form" method="post" action="{{route('individual/delete',['id'=>$individual->Idcardid])}}">
                 <input type="submit" id="delete" name="delete" value="删除此文档" class="btn-warning form-control">
             </form>
 
         </div>
-        //展示个人信息时
-        @foreach($family->members as $member)
-            <div class="row">
-                <div class="col-md-6">
-                    身份证号为 {{$member->IDcardid}}
-                </div>
-                <div class="col-md-6">
-                    姓名为  {{$member->name}}
-                </div>
-            </div>
-            <div class="row">
-                <div class ="col-md-12">
-                    <a href="{{route('indiviudal/show',['id'=>$member->IDcardid])}}" class="btn-primary">详细信息</a>
-                </div>
-            </div>
-        @endforeach
 
     </div>
+   <script>
+       $('#datePicker')
+               .datepicker({
+                   format: 'mm/dd/yyyy'
+               });
+   </script>
 @endsection
