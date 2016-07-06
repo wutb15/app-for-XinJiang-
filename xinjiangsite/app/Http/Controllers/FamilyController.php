@@ -20,6 +20,11 @@ class FamilyController extends Controller
     }
 
     public function create(Request $request){
+        $this->validate($request, [
+            'family_id'=>'required|numeric|unique:familyconditions',
+            'familyname'=>'required',
+            'familylocation'=>'required',
+        ]);
         $family = new Familycondition;
         foreach (array_keys($this->fields) as $field){
             $family->$field = $request->input($field);
@@ -48,6 +53,11 @@ class FamilyController extends Controller
 
     public function edit(Request $request)
     {
+        $this->validate($request, [
+            'family_id'=>'required|numeric|unique:familyconditions',
+            'familyname'=>'required',
+            'familylocation'=>'required',
+        ]);
         $fam_id =$request->input('family_id');
         $result=Familycondition::find($fam_id);
         foreach (array_keys($this->fields) as $field)
@@ -72,8 +82,11 @@ class FamilyController extends Controller
     }//一个家庭信息，外加成员简略信息如身份证
 
     public function search(Request $request){
-        $fam_id =$request->input('id');
+        $this->validate($request, [
+            'family_id'=>'required|numeric|unique:familyconditions',
+        ]);
+        $fam_id =$request->input('family_id');
         $result=Familycondition::findOrFail($fam_id);
-        return redirect()->route('family/show',['id'=>$result->family_id]);
+        return redirect()->route('family/show',['family_id'=>$result->family_id]);
     }//
 }

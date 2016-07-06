@@ -5,8 +5,8 @@
 
 <form role="form" action="{{url('family/search')}}" method="post">
     <div class="form-group">
-        <label for="home_id">家庭编号</label>
-        <input type="text"  class="form-control"  id="home_id"  name="home_id">
+        <label for="family_id">家庭编号</label>
+        <input type="text"  class="form-control"  id="family_id"  name="family_id">
 
     </div>
     <div class="form-group">

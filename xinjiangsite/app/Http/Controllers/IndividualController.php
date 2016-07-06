@@ -24,22 +24,36 @@ class IndividualController extends Controller
     }
 
     public function create(Request $request){
+        $this->validate($request, [
+            'Idcardid' => 'required|numeric|unique:individualconditions|size:18',
+            'income'=>'required|numeric',
+            'family_id'=>'required|numeric',
+            'birthday'=>'required',
+        ]);
         $individual = new IndividualController;
         $id = $request->input('family_id');
         $search = Familycondition::find($id);
-        if ($search) {
+        if ($search)
+        {
             foreach (array_keys($this->fields) as $field) {
                 $individual->$field = $request->input($field);
             }
             $individual->save();
             return redirect('success');
         }
-        else{
+        else
+        {
             return redirect('/failure')->withErrors("找不到信息!");
         }
     }
     
     public function edit(Request $request){
+        $this->validate($request, [
+            'Idcardid' => 'required|numeric|unique:individualconditions|size:18',
+            'income'=>'required|numeric',
+            'family_id'=>'required|numeric',
+            'birthday'=>'required',
+        ]);
         $ind_id = $request->input('IDcardid');
         $result=Individualcondition::find($ind_id);
         if (!$result)
@@ -69,6 +83,9 @@ class IndividualController extends Controller
     }
     
     public function move(Request $request){
+        $this->validate($request, [
+            'family_id'=>'required|numeric',
+        ]);
         $search=Individualcondition::find($request->input('Idcardid'));
         $target=Familycondition::findOrFail($request->input('family_id'));
         $search->family_id = $request->input('family_id');
@@ -83,10 +100,13 @@ class IndividualController extends Controller
     }//唯一作用是移动,迁户口
     
     public function show($id){
-        return view('individual.show')->with('indiviudal',Individualcondition::find($id));//这是一个示例
+        return view('individual.show')->with('indiviudal',Individualcondition::find($id));
     }//个人精确信息
     
     public function search(Request $request){
+        $this->validate($request, [
+            'Idcardid' => 'required|numeric|unique:individualconditions|size:18',
+        ]);
         $ind_id =$request->input('id');
         $result=Individualcondition::findOrFail($ind_id);
         return redirect()->route('individual/show',['id'=>$result->IDcardid]);
