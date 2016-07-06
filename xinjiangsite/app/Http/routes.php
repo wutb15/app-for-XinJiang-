@@ -25,9 +25,12 @@ Route::get('/individual/search', function(){
     return view('individual.search');
 })->middleware('auth');
 
-Route::get('/individual/show/{id?}','IndividualController@show');
+Route::get('/individual/show/{id}','IndividualController@show');
 
 Route::post('/individual/add','IndividualController@create');
+Route::get('individual/add',function(){
+    return view('individual.create');
+});
 
 Route::post('/individual/update','IndividualController@edit');
 
@@ -48,7 +51,9 @@ Route::get('/family/search',function(){
 Route::get('/family/show/{id}','FamilyController@show');
 
 Route::post('/family/add','FamilyController@create');
-Route::get('family/add',function(){});
+Route::get('family/add',function(){
+    return view('family.create');
+});
 
 
 Route::post('/family/update','FamilyController@edit');
