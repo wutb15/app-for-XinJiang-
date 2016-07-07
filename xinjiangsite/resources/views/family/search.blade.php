@@ -3,7 +3,8 @@
 
 @section('content')
 
-<form role="form" action="{{url('family/search')}}" method="post">
+<form role="form" action="{{url('family/search')}}" method="POST">
+    {!! csrf_field() !!}
     <div class="form-group">
         <label for="family_id">家庭编号</label>
         <input type="text"  class="form-control"  id="family_id"  name="family_id">
@@ -17,7 +18,8 @@
 </form>
 
 
-<form role="form" action="{{url('family/search')}}" method="post">
+<form role="form" action="{{url('family/search')}}" method="POST">
+    {!! csrf_field() !!}
     <div class="form-group">
         <label for="max_income">上限年收入(整数)</label>
         <input type="text" class="form-control" id="max_income"  name="max_income">

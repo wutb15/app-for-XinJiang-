@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <form role="form" method="post" action="{{url('individual/update')}}">
+        <form role="form" method="post" action="{{url('individual/add')}}">
             {{csrf_field()}}
             <div class="row">
                 <div class="col-md-6">

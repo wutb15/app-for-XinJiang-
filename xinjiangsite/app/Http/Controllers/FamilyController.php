@@ -11,7 +11,7 @@ class FamilyController extends Controller
 {
     protected $fields = [
         'family_name' => '',
-        'familylocation' => '',
+        'family_location' => '',
     ];
 
     public function __construct()
@@ -21,14 +21,12 @@ class FamilyController extends Controller
 
     public function create(Request $request){
         $this->validate($request, [
-            'family_id'=>'required|numeric|unique:familyconditions',
-            'familyname'=>'required',
-            'familylocation'=>'required',
+            'family_name'=>'required',
+            'family_location'=>'required',
         ]);
         $family = new Familycondition;
-        foreach (array_keys($this->fields) as $field){
-            $family->$field = $request->input($field);
-        }
+        $family->family_name=$request->get('family_name');
+        $family->family_location=$request->get('family_location');
         if($family->save())
         {
             return redirect('success');
@@ -87,6 +85,6 @@ class FamilyController extends Controller
         ]);
         $fam_id =$request->input('family_id');
         $result=Familycondition::findOrFail($fam_id);
-        return redirect()->route('family/show',['family_id'=>$result->family_id]);
+        //return redirect('family/show/1');
     }//
 }

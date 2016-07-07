@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="container">
-        <form role="form" method="post" action="{{url('family/update')}}">
-            {{csrf_field()}}
+        <form role="form" method="post" action="{{url('family/add')}}">
+            {!! csrf_field()!!}
             <div class="row">
                 <div class="col-md-6">
                     <label for="family_name">家庭名称</label>

@@ -19,46 +19,47 @@ Route::auth();
 
 Route::get('/home','HomeController@index');
 
-Route::post('/individual/search','IndividualController@search');
+Route::post('individual/search','IndividualController@search');
 
-Route::get('/individual/search', function(){
+Route::get('individual/search', function(){
     return view('individual.search');
 })->middleware('auth');
 
-Route::get('/individual/show/{id}','IndividualController@show');
+Route::get('individual/show/{id}','IndividualController@show');
 
-Route::post('/individual/add','IndividualController@create');
+Route::post('individual/add','IndividualController@create');
 Route::get('individual/{id}/add',function($id){
     return view('individual.create')->with('family_id',$id);
 });
 
-Route::post('/individual/update','IndividualController@edit');
+Route::post('individual/update','IndividualController@edit');
 
-Route::post('/individual/delete/{id}','IndividualController@delete');
+Route::post('individual/delete/{id}','IndividualController@delete');
 
-Route::post('/individual/move','IndividualController@move');
-
-
+Route::post('individual/move','IndividualController@move');
 
 
 
-Route::post('/family/search','FamilyController@search');
 
-Route::get('/family/search',function(){
+
+Route::post('family/search','FamilyController@search');
+
+Route::get('family/search',function(){
     return view('family.search');
 })->middleware('auth');
 
-Route::get('/family/show/{id}','FamilyController@show');
+Route::get('family/show/{id}',['as'=>'family.show','uses'=>'FamilyController@show']);
 
-Route::post('/family/add','FamilyController@create');
+Route::post('family/add','FamilyController@create');
+
 Route::get('family/add',function(){
     return view('family.create');
 });
 
 
-Route::post('/family/update','FamilyController@edit');
+Route::post('family/update','FamilyController@edit');
 
-Route::post('/family/delete/{id}','FamilyController@delete');
+Route::post('family/delete/{id}','FamilyController@delete');
 
 
 

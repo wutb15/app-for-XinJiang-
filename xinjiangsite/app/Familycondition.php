@@ -14,7 +14,7 @@ class Familycondition extends Model
 
 
     protected $fillable=[
-        'familyname','familylocation'
+        'family_name','family_location'
     ];
 
 

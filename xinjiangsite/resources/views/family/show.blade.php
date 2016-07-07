@@ -4,7 +4,7 @@
 @section('content')
  <div class="container">
      <form role="form" method="post" action="{{url('family/update')}}">
-         {{csrf_field()}}
+         {!! csrf_field() !!}}
          <div class="row">
             <div class="col-md-6">
              <label for="family_id">家庭编号 </label>
@@ -42,7 +42,7 @@
      @foreach($family->members as $member)
          <div class="row">
              <div class="col-md-6">
-                 身份证号为 {{$member->IDcardid}}
+                 身份证号为 {{$member->Idcardid}}
              </div>
              <div class="col-md-6">
                  姓名为  {{$member->name}}

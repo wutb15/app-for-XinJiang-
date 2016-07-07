@@ -38,8 +38,14 @@ class IndividualController extends Controller
             foreach (array_keys($this->fields) as $field) {
                 $individual->$field = $request->input($field);
             }
-            $individual->save();
-            return redirect('success');
+            if($individual->save())
+            {
+                return redirect('success');
+            }
+            else
+            {
+                return redirect('/failure')->withErrors("创建失败");
+            }
         }
         else
         {
@@ -54,19 +60,20 @@ class IndividualController extends Controller
             'family_id'=>'required|numeric',
             'birthday'=>'required',
         ]);
-        $ind_id = $request->input('IDcardid');
-        $result=Individualcondition::find($ind_id);
-        if (!$result)
-            return redirect('/failure')->withErrors("找不到信息!");
-        else
+        $ind_id = $request->input('Idcardid');
+        $result=Individualcondition::findOrFail($ind_id);
+        foreach (array_keys($this->fields) as $field)
         {
-            foreach (array_keys($this->fields) as $field)
-            {
                 if($field=='family_id')  continue;
                 $result->$field = $request->input($field);
+        }
+            if($result->save())
+            {
+                return redirect()->route('individual/show',['id'=>$result->Idcardid]);
             }
-            $result->save();
-            return redirect()->route('individual/show',['id'=>$result->IDcardid]);
+        else
+        {
+            return redirect('/failure')->withErrors("保存失败");
         }
     }//不可以变动家庭
     
@@ -109,7 +116,7 @@ class IndividualController extends Controller
         ]);
         $ind_id =$request->input('id');
         $result=Individualcondition::findOrFail($ind_id);
-        return redirect()->route('individual/show',['id'=>$result->IDcardid]);
+        return redirect()->route('individual/show',['id'=>$result->Idcardid]);
     }
     //
 }

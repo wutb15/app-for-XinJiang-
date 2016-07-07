@@ -62,8 +62,8 @@
                     <li><a href="{{url('/login')}}">搜索个人信息</a></li>
                 @else
                     <li><a href="{{url('family/search')}}">搜索家庭信息</a></li>
-                    <li><a href="{{url('/create')}}">新建家户</a></li>
-                    <li><a href="{{url('family/search')}}">搜索个人信息</a></li>
+                    <li><a href="{{url('family/add')}}">新建家户</a></li>
+                    <li><a href="{{url('individual/search')}}">搜索个人信息</a></li>
 
                 @endif
             </ul>
@@ -82,7 +82,6 @@
 
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>退出</a>
-                                <a href ="{{url('/change')}}"><i class="fa fa-btn fa-sign-out"></i>修改资料</a>
 
                             </li>
                         </ul>
