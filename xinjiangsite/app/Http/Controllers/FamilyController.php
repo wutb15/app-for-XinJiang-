@@ -25,8 +25,10 @@ class FamilyController extends Controller
             'family_location'=>'required',
         ]);
         $family = new Familycondition;
-        $family->family_name=$request->get('family_name');
-        $family->family_location=$request->get('family_location');
+        foreach (array_keys($this->fields) as $field)
+        {
+            $family->$field = $request->input($field);
+        }
         if($family->save())
         {
             return redirect('success');
@@ -39,20 +41,22 @@ class FamilyController extends Controller
     
     
     public function delete($id){
-        $result=Familycondition::find($id);
-        if (!$result)
-            return redirect('/failure')->withErrors("找不到信息!");
-        else{
-            $result->delete();
-            return redirect('success');
+        $result=Familycondition::findOrFail($id);
+            if($result->delete())
+            {
+                return redirect('success');
+            }
+        else
+        {
+            return redirect('failure')->withErrors('删除失败');
         }
+
     }
 
 
     public function edit(Request $request)
     {
         $this->validate($request, [
-            'family_id'=>'required|numeric|unique:familyconditions',
             'familyname'=>'required',
             'familylocation'=>'required',
         ]);
@@ -76,7 +80,7 @@ class FamilyController extends Controller
     
 
     public function show($id){
-        return view('family.show')->with('family',Familycondition::find($id)->with('members'));
+        return view('family.show')->with('family',Familycondition::find($id));
     }//一个家庭信息，外加成员简略信息如身份证
 
     public function search(Request $request){
@@ -85,6 +89,6 @@ class FamilyController extends Controller
         ]);
         $fam_id =$request->input('family_id');
         $result=Familycondition::findOrFail($fam_id);
-        //return redirect('family/show/1');
+        return redirect(route('family.show',['id'=>$fam_id]));
     }//
 }

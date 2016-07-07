@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <form role="form" method="post" action="{{url('individual/update')}}">
-            {{csrf_field()}}
+            {!!csrf_field()!!}
             <div class="row">
                 <div class="col-md-6">
                     <label for="Idcardid">身份证号 </label>

@@ -4,7 +4,7 @@
 @section('content')
  <div class="container">
      <form role="form" method="post" action="{{url('family/update')}}">
-         {!! csrf_field() !!}}
+         {!! csrf_field() !!}
          <div class="row">
             <div class="col-md-6">
              <label for="family_id">家庭编号 </label>
@@ -33,12 +33,12 @@
      </form>
      <div class="row">
 
-        <form role="form" method="post" action="{{route('family/delete',['id'=>$family->family_id])}}">
+        <form role="form" method="post" action="{{route('family.delete',['id'=>$family->family_id])}}">
+                {!! csrf_field() !!}
                 <input type="submit" id="delete" name="delete" value="删除此文档" class="btn-warning form-control">
         </form>
 
      </div>
-     //展示个人信息时
      @foreach($family->members as $member)
          <div class="row">
              <div class="col-md-6">
@@ -50,7 +50,7 @@
          </div>
          <div class="row">
              <div class ="col-md-12">
-                 <a href="{{route('indiviudal/show',['id'=>$member->IDcardid])}}" class="btn-primary">详细信息</a>
+                 <a href="{{route('indiviudal/show',['id'=>$member->Idcardid])}}" class="btn-primary">详细信息</a>
              </div>
          </div>
      @endforeach

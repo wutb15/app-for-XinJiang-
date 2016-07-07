@@ -28,13 +28,14 @@ Route::get('individual/search', function(){
 Route::get('individual/show/{id}','IndividualController@show');
 
 Route::post('individual/add','IndividualController@create');
+
 Route::get('individual/{id}/add',function($id){
     return view('individual.create')->with('family_id',$id);
 });
 
 Route::post('individual/update','IndividualController@edit');
 
-Route::post('individual/delete/{id}','IndividualController@delete');
+Route::post('individual/delete/{id}',['as'=>'individual.delete','IndividualController@delete']);
 
 Route::post('individual/move','IndividualController@move');
 
@@ -59,7 +60,7 @@ Route::get('family/add',function(){
 
 Route::post('family/update','FamilyController@edit');
 
-Route::post('family/delete/{id}','FamilyController@delete');
+Route::post('family/delete/{id}',['as'=>'family.delete','uses'=>'FamilyController@delete']);
 
 
 

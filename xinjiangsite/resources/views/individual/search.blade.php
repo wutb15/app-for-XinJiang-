@@ -6,7 +6,7 @@
             请使用身份证号搜索居民
         </div>
         <form role="form" method="post" action="{{url('individual/search')}}">
-            {{ csrf_field() }}
+            {!!csrf_field() !!}
             <div class="form-group">
                 <label for="id">身份证号</label>
                 <input type="text" name="id" id="id">

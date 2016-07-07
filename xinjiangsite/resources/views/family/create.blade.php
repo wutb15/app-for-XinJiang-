@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <label for="family_location">家庭住址</label>
                     <input type="text" id="family_location" name="family_location" value="" class="form-control" placeholder="在此输入家庭住址">
                 </div>
