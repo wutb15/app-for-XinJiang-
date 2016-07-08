@@ -2,21 +2,38 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
-        <div id="title" class="a">
-            请使用身份证号搜索居民
+        <div class="row">
+            <div class="col-md-6">
+                <p class="text-primary">请在此使用身份证号进行搜索</p>
+            </div>
         </div>
-        <form role="form" method="post" action="{{url('individual/search')}}">
-            {!!csrf_field() !!}
-            <div class="form-group">
-                <label for="id">身份证号</label>
-                <input type="text" name="Idcardid" id="id">
-            </div>
-            <div class="form-group">
-                <input type="submit" class="btn-primary" name="search" id="search" value="搜索">
-            </div>
+        <div class="row">
+            <form role="form" method="post" action="{{url('individual/search')}}">
+                {!!csrf_field() !!}
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button type=submit class="btn btn-default">搜索</button>
+                        </span>
+                        <input type="text" class="form-control"  name="Idcardid" id="id"  placeholder="请在此输入身份证号码">
+                    </div>
 
-        </form>
+                </div>
+                <div class="col-md-6">
+                    @if($errors->has('Idcardid'))
+                        <span class="help-block">
+                            <strong>
+                                {{$errors->first('Idcardid')}}
+                            </strong>
+
+                        </span>
+                    @endif
+                </div>
+
+            </form>
+        </div>
     </div>
     {{dump($errors)}}
+
 @endsection
 
