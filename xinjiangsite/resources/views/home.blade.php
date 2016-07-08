@@ -5,10 +5,10 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+                <div class="panel-heading">贫困人口信息管理</div>
 
                 <div class="panel-body">
-                    You are logged in!
+                    你已登陆成功！！
                 </div>
             </div>
         </div>

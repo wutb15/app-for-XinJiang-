@@ -11,7 +11,7 @@
             <form role="form" method="post" action="{{url('individual/search')}}">
                 {!!csrf_field() !!}
                 <div class="col-md-6">
-                    <div class="input-group">
+                    <div class="input-group{{$errors->has('Idcardid') ? 'has-error':''}}">
                         <span class="input-group-btn">
                             <button type=submit class="btn btn-default">搜索</button>
                         </span>
@@ -33,7 +33,6 @@
             </form>
         </div>
     </div>
-    {{dump($errors)}}
 
 @endsection
 

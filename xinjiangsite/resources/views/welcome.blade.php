@@ -8,7 +8,7 @@
                         <div class="panel-heading">Welcome</div>
 
                         <div class="panel-body">
-                            Your Application's Landing Page.
+                            这是登陆界面
                         </div>
                     </div>
                 </div>

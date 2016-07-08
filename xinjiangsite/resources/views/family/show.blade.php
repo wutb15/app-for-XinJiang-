@@ -56,13 +56,13 @@
          </div>
          <div class="row">
              <div class ="col-md-12">
-                 <a href="{{route('individual.show',['id'=>$member->Idcardid])}}"  class="btn-primary">详细信息</a>
+                 <a href="{{route('individual.show',['id'=>$member->Idcardid])}}"  class="btn-primary" role="button">详细信息</a>
              </div>
          </div>
      @endforeach
      <div class="row">
          <div class="col-md-6">
-             <a href="{{route('individual.add',['id'=>$family->family_id])}}" class="btn-primary">新建家庭成员</a>
+             <a href="{{route('individual.add',['id'=>$family->family_id])}}" class="btn-primary" role="button">新建家庭成员</a>
          </div>
      </div>
 
