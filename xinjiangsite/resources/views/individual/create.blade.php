@@ -12,7 +12,7 @@
                 </div>
                 <div class="col-md-6">
                     <label for="name">姓名</label>
-                    <input type="text" id="name" name="family_name" value="" class="form-control">
+                    <input type="text" id="name" name="name" value="" class="form-control">
                 </div>
             </div>
             <div class="row">
@@ -30,8 +30,8 @@
 
             </div>
             <div class="row">
-                <label class="col-xs-3 control-label" for="date">生日</label>
-                <div class="col-xs-5 date">
+                <label for="date">生日</label>
+                <div class="col-md-6 date">
                     <div class="input-group input-append date" id="datePicker">
                         <input type="text" class="form-control" name="birthday" id="date">
                         <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>

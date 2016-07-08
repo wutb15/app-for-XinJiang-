@@ -25,10 +25,10 @@ class IndividualController extends Controller
 
     public function create(Request $request){
         $this->validate($request, [
-            'Idcardid' => 'required|numeric|unique:individualconditions|size:18',
+            'Idcardid' => 'required|numeric|unique:individualconditions|max:18|min:18',
             'income'=>'required|numeric',
             'family_id'=>'required|numeric',
-            'birthday'=>'required',
+            'birthday'=>'required|date',
         ]);
         $individual = new IndividualController;
         $id = $request->input('family_id');
@@ -55,13 +55,13 @@ class IndividualController extends Controller
     
     public function edit(Request $request){
         $this->validate($request, [
-            'Idcardid' => 'required|numeric|unique:individualconditions|size:18',
+            'Idcardid' => 'required|numeric|max:18|min:18',
             'income'=>'required|numeric',
             'family_id'=>'required|numeric',
             'birthday'=>'required',
         ]);
         $ind_id = $request->input('Idcardid');
-        $result=Individualcondition::findOrFail($ind_id);
+        $result=Individualcondition::find($ind_id);
         foreach (array_keys($this->fields) as $field)
         {
                 if($field=='family_id')  continue;
@@ -94,15 +94,17 @@ class IndividualController extends Controller
             'family_id'=>'required|numeric',
         ]);
         $search=Individualcondition::find($request->input('Idcardid'));
-        $target=Familycondition::findOrFail($request->input('family_id'));
-        $search->family_id = $request->input('family_id');
-        if($search->save())
-        {
-            return redirect('success');
+        if($target=Familycondition::find($request->input('family_id'))) {
+            $search->family_id = $request->input('family_id');
+            if ($search->save()) {
+                return redirect('success');
+            } else {
+                return redirect('failure')->withErrors('保存失败');
+            }
         }
         else
         {
-            return redirect('failure')->withErrors('保存失败');
+            return redirect('failure')->withErrors('没有这样的目标家庭');
         }
     }//唯一作用是移动,迁户口
     
@@ -112,11 +114,17 @@ class IndividualController extends Controller
     
     public function search(Request $request){
         $this->validate($request, [
-            'Idcardid' => 'required|numeric|unique:individualconditions|size:18',
+            'Idcardid' => 'required|numeric|max:18|min:18',
         ]);
-        $ind_id =$request->input('id');
-        $result=Individualcondition::findOrFail($ind_id);
-        return redirect()->route('individual/show',['id'=>$result->Idcardid]);
+        $ind_id =$request->input('Idcardid');
+        if($result=Individualcondition::find($ind_id))
+        {
+            return redirect()->route('individual/show',['id'=>$result->Idcardid]);
+        }
+        else
+        {
+            return redirect('failure');
+        }
     }
     //
 }

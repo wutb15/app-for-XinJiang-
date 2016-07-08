@@ -85,10 +85,16 @@ class FamilyController extends Controller
 
     public function search(Request $request){
         $this->validate($request, [
-            'family_id'=>'required|numeric|unique:familyconditions',
+            'family_id'=>'required|numeric'
         ]);
         $fam_id =$request->input('family_id');
-        $result=Familycondition::findOrFail($fam_id);
-        return redirect(route('family.show',['id'=>$fam_id]));
-    }//
+        if(Familycondition::find($fam_id))
+        {
+            return redirect(route('family.show',['id'=>$fam_id]));
+        }
+        else
+        {
+            return redirect('failure')->withErrors('找不到信息');
+        }
+    }
 }

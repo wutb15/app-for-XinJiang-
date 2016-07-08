@@ -25,13 +25,13 @@ Route::get('individual/search', function(){
     return view('individual.search');
 })->middleware('auth');
 
-Route::get('individual/show/{id}','IndividualController@show');
+Route::get('individual/show/{id}',['as'=>'indiviudal.show','uses'=>'IndividualController@show']);
 
 Route::post('individual/add','IndividualController@create');
 
-Route::get('individual/{id}/add',function($id){
+Route::get('individual/{id}/add',['as'=>'individual.add',function($id){
     return view('individual.create')->with('family_id',$id);
-});
+}]);
 
 Route::post('individual/update','IndividualController@edit');
 
@@ -64,9 +64,9 @@ Route::post('family/delete/{id}',['as'=>'family.delete','uses'=>'FamilyControlle
 
 
 
-Route::get('failure',function(){
+Route::get('failure',['as'=>'failure',function(){
     return view('failure');
-});
+}]);
 
 Route::get('success',function (){
     return view('success');

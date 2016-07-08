@@ -23,6 +23,9 @@
              </div>
          </div>
          <div class="row">
+             <br>
+         </div>
+         <div class="row">
              <div class="col-md-6">
                  <input type="submit" id="submit" name="submit" value="提交更改" class="btn-primary form-control">
              </div>
@@ -32,12 +35,15 @@
          </div>
      </form>
      <div class="row">
-
-        <form role="form" method="post" action="{{route('family.delete',['id'=>$family->family_id])}}">
+        <br>
+     </div>
+     <div class="row">
+         <div class="col-md-6" align="center">
+            <form role="form" method="post" action="{{route('family.delete',['id'=>$family->family_id])}}">
                 {!! csrf_field() !!}
                 <input type="submit" id="delete" name="delete" value="删除此文档" class="btn-warning form-control">
-        </form>
-
+            </form>
+         </div>
      </div>
      @foreach($family->members as $member)
          <div class="row">
@@ -50,10 +56,15 @@
          </div>
          <div class="row">
              <div class ="col-md-12">
-                 <a href="{{route('indiviudal/show',['id'=>$member->Idcardid])}}" class="btn-primary">详细信息</a>
+                 <a href="{{route('indiviudal.show',['id'=>$member->Idcardid])}}"  class="btn-primary">详细信息</a>
              </div>
          </div>
      @endforeach
+     <div class="row">
+         <div class="col-md-6">
+             <a href="{{route('individual.add',['id'=>$family->family_id])}}" class="btn-primary">新建家庭成员</a>
+         </div>
+     </div>
 
  </div>
 

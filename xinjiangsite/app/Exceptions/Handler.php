@@ -47,7 +47,7 @@ class Handler extends ExceptionHandler
     {
         if($e instanceof ModelNotFoundException)
         {
-            response()->redirectToRoute('failure');
+            response()->redirectTo('failure');
         }
         return parent::render($request, $e);
     }
