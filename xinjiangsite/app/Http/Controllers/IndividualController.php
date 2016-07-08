@@ -12,7 +12,7 @@ class IndividualController extends Controller
 {
     protected $fields = [
         'Idcardid' => '',
-        'sex enum' => '',
+        'sex' => '',
         'family_id' => 0,
         'birthday' => '',
         'income' => 0,
@@ -25,12 +25,12 @@ class IndividualController extends Controller
 
     public function create(Request $request){
         $this->validate($request, [
-            'Idcardid' => 'required|numeric|unique:individualconditions|max:18|min:18',
+            'Idcardid' => 'required|numeric|unique:individualconditions',
             'income'=>'required|numeric',
             'family_id'=>'required|numeric',
             'birthday'=>'required|date',
         ]);
-        $individual = new IndividualController;
+        $individual = new Individualcondition;
         $id = $request->input('family_id');
         $search = Familycondition::find($id);
         if ($search)
@@ -55,7 +55,7 @@ class IndividualController extends Controller
     
     public function edit(Request $request){
         $this->validate($request, [
-            'Idcardid' => 'required|numeric|max:18|min:18',
+            'Idcardid' => 'required|numeric',
             'income'=>'required|numeric',
             'family_id'=>'required|numeric',
             'birthday'=>'required',
@@ -69,7 +69,7 @@ class IndividualController extends Controller
         }
             if($result->save())
             {
-                return redirect()->route('individual/show',['id'=>$result->Idcardid]);
+                return redirect()->route('individual.show',['id'=>$result->Idcardid]);
             }
         else
         {
@@ -109,17 +109,17 @@ class IndividualController extends Controller
     }//唯一作用是移动,迁户口
     
     public function show($id){
-        return view('individual.show')->with('indiviudal',Individualcondition::find($id));
+        return view('individual.show')->with('individual',Individualcondition::find($id));
     }//个人精确信息
     
     public function search(Request $request){
         $this->validate($request, [
-            'Idcardid' => 'required|numeric|max:18|min:18',
+            'Idcardid' => 'required|numeric'
         ]);
         $ind_id =$request->input('Idcardid');
         if($result=Individualcondition::find($ind_id))
         {
-            return redirect()->route('individual/show',['id'=>$result->Idcardid]);
+            return redirect()->route('individual.show',['id'=>$result->Idcardid]);
         }
         else
         {

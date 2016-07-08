@@ -25,7 +25,7 @@ Route::get('individual/search', function(){
     return view('individual.search');
 })->middleware('auth');
 
-Route::get('individual/show/{id}',['as'=>'indiviudal.show','uses'=>'IndividualController@show']);
+Route::get('individual/show/{id}',['as'=>'individual.show','uses'=>'IndividualController@show']);
 
 Route::post('individual/add','IndividualController@create');
 

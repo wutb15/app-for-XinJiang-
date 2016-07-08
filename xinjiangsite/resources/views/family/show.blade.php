@@ -56,7 +56,7 @@
          </div>
          <div class="row">
              <div class ="col-md-12">
-                 <a href="{{route('indiviudal.show',['id'=>$member->Idcardid])}}"  class="btn-primary">详细信息</a>
+                 <a href="{{route('individual.show',['id'=>$member->Idcardid])}}"  class="btn-primary">详细信息</a>
              </div>
          </div>
      @endforeach

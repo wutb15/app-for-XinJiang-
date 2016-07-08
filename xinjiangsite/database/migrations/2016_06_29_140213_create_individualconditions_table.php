@@ -15,7 +15,7 @@ class CreateIndividualconditionsTable extends Migration
         Schema::create('individualconditions', function (Blueprint $table) {
             $table->string('Idcardid',19);
             $table->primary('Idcardid');
-            $table->dateTime('birthday');
+            $table->date('birthday');
             $table->decimal('income');
             $table->string('name',60);
             $table->tinyInteger('sex');

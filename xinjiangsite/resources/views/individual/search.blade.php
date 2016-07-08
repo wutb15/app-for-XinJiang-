@@ -1,8 +1,8 @@
 
 @extends('layouts.app')
 @section('content')
-    <div id="formdiv" class="center-block" align="center">
-        <div id="title" class="text-primary">
+    <div class="container">
+        <div id="title" class="a">
             请使用身份证号搜索居民
         </div>
         <form role="form" method="post" action="{{url('individual/search')}}">
