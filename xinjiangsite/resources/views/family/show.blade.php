@@ -8,18 +8,18 @@
          <div class="row">
             <div class="col-md-6">
              <label for="family_id">家庭编号 </label>
-             <input type="text" id="family_id" name="family_id" value="{{$family->family_id}}" class="form-control">
+             <input type="text" id="family_id" name="family_id" value="{{$family->family_id}}" class="form-control" readonly>
 
             </div>
              <div class="col-md-6">
                  <label for="family_name">家庭名称</label>
-                 <input type="text" id="family_name" name="family_name" value="{{$family->family_name}}" class="form-control">
+                 <input type="text" id="family_name" name="family_name" value="{{$family->family_name}}" class="form-control" readonly>
              </div>
          </div>
          <div class="row">
              <div class="col-md-12">
                  <label for="family_location">家庭住址</label>
-                 <input type="text" id="family_location" name="family_location" value="{{$family->family_location}}" class="form-control">
+                 <input type="text" id="family_location" name="family_location" value="{{$family->family_location}}" class="form-control" readonly>
              </div>
          </div>
          <div class="row">
@@ -30,7 +30,7 @@
                  <input type="submit" id="submit" name="submit" value="提交更改" class="btn-primary form-control">
              </div>
              <div class="col-md-6">
-                 <input type="button" id="edit" name="edit" value="编辑文档" class="btn-primary form-control">
+                 <input type="button" id="edit" name="edit" value="编辑文档" class="btn-primary form-control"  onclick="Edit()">
              </div>
          </div>
      </form>
@@ -67,5 +67,13 @@
      </div>
 
  </div>
+    <script type="text/javascript">
+         function Edit()
+         {
+            document.getElementById("family_id").readOnly="false";
+            document.getElementById("family_name").readOnly="false";
+            document.getElementById("family_location").readOnly="false";
+         }
+    </script>
 
 @endsection
