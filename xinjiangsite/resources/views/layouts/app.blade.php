@@ -34,6 +34,7 @@
         .carousel {
             height:500px;
             background-color:#000;
+            margin-bottom:60px;
         }
         .carousel.item{
             height:500px;
@@ -41,6 +42,9 @@
         }
         .carousel img{
             width:100%;
+        }
+        #summary-container .col-md-4{
+            text-align: center;
         }
     </style>
 </head>
