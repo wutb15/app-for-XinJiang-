@@ -5,9 +5,11 @@
             <p class="text-center">
                 操作成功
             </p>
-            <button>
-
-            </button>
+            <div class="col-md-2 col-md-offset-5">
+            <a  href="{{url('home')}}"  class="btn btn-info center-block" role="button">
+                返回主页
+            </a>
+            </div>
         </div>
     </div>
 @endsection
