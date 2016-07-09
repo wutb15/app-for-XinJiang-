@@ -13,19 +13,19 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
         <div class="item active">
-            <img src="img/1.jpg" alt="1 slide">
+            <img src="img/1.jpg" alt="1 slide" height="300px">
             <div class="carousel-caption">
 
             </div>
         </div>
         <div class="item">
-            <img src="img/2.jpg" alt="2 slide">
+            <img src="img/2.jpg" alt="2 slide" height="300px>
             <div class="carousel-caption">
                 
             </div>
         </div>
         <div class="item">
-            <img src="img/3.jpg" alt="3 slide">
+            <img src="img/3.jpg" alt="3 slide" height="300px>
             <div class="carousel-caption">
 
             </div>
