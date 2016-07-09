@@ -1,19 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading">贫困人口信息管理</div>
 
-                <div class="panel-body">
-                    你已登陆成功！！
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -54,6 +42,12 @@
         <span class="sr-only">下一页</span>
     </a>
 </div>
+
+
+<div class="projects-header page-header" >
+    <h2>您已登录成功人口信息管理系统</h2>
+</div>
+
 
 <div class="container" id="summary-container">
     <div class="row">

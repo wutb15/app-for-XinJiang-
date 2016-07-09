@@ -46,6 +46,13 @@
         #summary-container .col-md-4{
             text-align: center;
         }
+        .projects-header {
+           margin-bottom:50px;
+            text-align: center;
+        }
+        .projects-header.h2{
+            font-size: 20px;
+        }
     </style>
 </head>
 <body id="app-layout">
