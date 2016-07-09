@@ -32,12 +32,12 @@
             margin-right: 6px;
         }
         .carousel {
-            height:500px;
+            height:300px;
             background-color:#000;
             margin-bottom:60px;
         }
         .carousel.item{
-            height:500px;
+            height:300px;
             background-color:#000;
         }
         .carousel img{
