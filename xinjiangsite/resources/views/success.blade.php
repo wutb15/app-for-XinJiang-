@@ -10,6 +10,4 @@
                 返回主页
             </a>
             </div>
-        </div>
-    </div>
 @endsection
