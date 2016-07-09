@@ -57,8 +57,8 @@ class FamilyController extends Controller
     public function edit(Request $request)
     {
         $this->validate($request, [
-            'familyname'=>'required',
-            'familylocation'=>'required',
+            'family_name'=>'required',
+            'family_location'=>'required',
         ]);
         $fam_id =$request->input('family_id');
         $result=Familycondition::find($fam_id);
