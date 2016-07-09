@@ -31,6 +31,17 @@
         .fa-btn {
             margin-right: 6px;
         }
+        .carousel {
+            height:500px;
+            background-color:#000;
+        }
+        .carousel.item{
+            height:500px;
+            backgroud-color:#000;
+        }
+        .carousel img{
+            width:100%;
+        }
     </style>
 </head>
 <body id="app-layout">
