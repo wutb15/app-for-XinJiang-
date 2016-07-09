@@ -11,7 +11,7 @@
                 <form role="form" method="post" class="form-horizontal" action="{{url('individual/update')}}">
                     {!!csrf_field()!!}
 
-                    <div class="form-group">
+                    <div class="form-group {{$errors->has('Idcardid') ? 'has-error':''}}">
                         <label for="Idcardid" class="col-md-4 control-label">身份证号 </label>
                         <div class="col-md-6">
                             <input type="text" id="Idcardid" name="Idcardid" value="{{$individual->Idcardid}}" class="form-control" readonly>
@@ -22,7 +22,7 @@
                             @endif
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group{{$errors->has('name') ? 'has-error':''}}">
                         <label for="name" class="col-md-4 control-label">姓名</label>
                         <div class="col-md-6">
                         <input type="text" id="name" name="name" value="{{$individual->name}}" class="form-control" readonly>
@@ -33,7 +33,7 @@
                             @endif
                         </div>
                      </div>
-                    <div class="form-group">
+                    <div class="form-group {{$errors->has('income') ? 'has-error':''}}">
                         <label for="income" class="col-md-4 control-label">年收入</label>
                         <div class="col-md-6">
                         <input type="text" id="income" name="income" value="{{$individual->income}}" class="form-control" readonly>
@@ -88,6 +88,7 @@
                 <div class="row">
 
                      <form role="form" method="post" action="{{route('individual.delete',['id'=>$individual->Idcardid])}}">
+                         {!!csrf_field()!!}
                         <div class="col-md-6 col-md-offset-4">
                             <input type="submit" id="delete" name="delete" value="删除此文档" class="btn-danger form-control">
                         </div>
@@ -101,7 +102,6 @@
    <script>
 
        function enableEdit(){
-           document.getElementById("Idcardid").readOnly=false;
            document.getElementById("name").readOnly=false;
            document.getElementById("income").readOnly=false;
            document.getElementById("sex").disabled=false;

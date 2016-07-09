@@ -35,7 +35,7 @@ Route::get('individual/{id}/add',['as'=>'individual.add',function($id){
 
 Route::post('individual/update','IndividualController@edit');
 
-Route::post('individual/delete/{id}',['as'=>'individual.delete','IndividualController@delete']);
+Route::post('individual/delete/{id}',['as'=>'individual.delete','uses'=>'IndividualController@delete']);
 
 Route::post('individual/move','IndividualController@move');
 
@@ -71,6 +71,9 @@ Route::get('failure',['as'=>'failure',function(){
 Route::get('success',function (){
     return view('success');
 });
+
+Route::any('family/income_search','FamilyController@income_search');
+
 
 
 

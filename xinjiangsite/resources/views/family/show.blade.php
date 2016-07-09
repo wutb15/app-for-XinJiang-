@@ -69,6 +69,7 @@
      </div>
      <div class="row">
          <form role="form" method="post" action="{{route('family.delete',['id'=>$family->family_id])}}" style="margin-bottom: 60px">
+             {!! csrf_field() !!}
              <input type="submit" value="删除此文档" name="delete" class="btn btn-danger">
          </form>
      </div>

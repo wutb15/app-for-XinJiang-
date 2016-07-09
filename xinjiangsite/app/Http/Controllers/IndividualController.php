@@ -20,7 +20,7 @@ class IndividualController extends Controller
     ];
     public function __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware('auth');
     }
 
     public function create(Request $request){
@@ -28,7 +28,7 @@ class IndividualController extends Controller
             'Idcardid' => 'required|numeric|unique:individualconditions',
             'income'=>'required|numeric',
             'family_id'=>'required|numeric',
-            'birthday'=>'required|date',
+            'birthday'=>'required',
         ]);
         $individual = new Individualcondition;
         $id = $request->input('family_id');
@@ -40,6 +40,9 @@ class IndividualController extends Controller
             }
             if($individual->save())
             {
+                $search->setFamilyIncome();
+
+                $search->save();
                 return redirect('success');
             }
             else
@@ -62,6 +65,7 @@ class IndividualController extends Controller
         ]);
         $ind_id = $request->input('Idcardid');
         $result=Individualcondition::find($ind_id);
+        $search=Familycondition::find($request->input('family_id'));
         foreach (array_keys($this->fields) as $field)
         {
                 if($field=='family_id')  continue;
@@ -69,6 +73,8 @@ class IndividualController extends Controller
         }
             if($result->save())
             {
+                $search->setFamilyIncome();
+                $search->save();
                 return redirect()->route('individual.show',['id'=>$result->Idcardid]);
             }
         else
@@ -78,15 +84,25 @@ class IndividualController extends Controller
     }//不可以变动家庭
     
     public function delete($id){
-        $result=Individualcondition::find($id);
-        if($result->delete())
+        if($result=Individualcondition::find($id))
         {
-            return redirect('success');
+
+            $family=$result->family;
+            if($result->delete())
+            {
+                $family->setFamilyIncome();
+                $family->save();
+                return redirect('success');
+            }
+            else
+            {
+                return redirect('failure')->withErrors('删除失败');
+            }
         }
-        else
-        {
-            return redirect('failure')->withErrors('删除失败');
+        else{
+            return redirect('failure')->withErrors('无此信息');
         }
+
     }
     
     public function move(Request $request){
@@ -94,9 +110,15 @@ class IndividualController extends Controller
             'family_id'=>'required|numeric',
         ]);
         $search=Individualcondition::find($request->input('Idcardid'));
+        $source=$search->family;
         if($target=Familycondition::find($request->input('family_id'))) {
             $search->family_id = $request->input('family_id');
             if ($search->save()) {
+                $source->setFamilyIncome();
+                $target->setFamilyIncome();
+                $source->save();
+                $target->save();
+
                 return redirect('success');
             } else {
                 return redirect('failure')->withErrors('保存失败');
@@ -123,7 +145,7 @@ class IndividualController extends Controller
         }
         else
         {
-            return redirect('failure');
+            return redirect('failure')->withErrors('未找到');
         }
     }
     //

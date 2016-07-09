@@ -35,20 +35,22 @@ class FamilyController extends Controller
         }
         else
         {
-            return redirect('failure');
+            return redirect('failure')->withErrors('创建失败');
         }
     }
     
     
     public function delete($id){
-        $result=Familycondition::findOrFail($id);
-            if($result->delete())
-            {
+        $result=Familycondition::find($id);
+        if(!$result->members->first()) {
+            if ($result->delete()) {
                 return redirect('success');
+            } else {
+                return redirect('failure')->withErrors('删除失败');
             }
-        else
-        {
-            return redirect('failure')->withErrors('删除失败');
+        }
+        else{
+            return redirect('failure')->withErrors('不能删除还有家庭成员的家庭');
         }
 
     }
@@ -72,7 +74,7 @@ class FamilyController extends Controller
             }
         else
         {
-            return redirect('failure');
+            return redirect('failure')->withErrors('保存失败');
         }
 
     }
@@ -96,5 +98,27 @@ class FamilyController extends Controller
         {
             return redirect('failure')->withErrors('找不到信息');
         }
+    }
+
+    public function income_search(Request $request)
+    {
+       $this->validate($request, [
+            'min_income'=>'required|numeric',
+            'max_income'=>'required|numeric'
+        ]);
+        $max_income=$request->get('max_income');
+        $min_income=$request->get('min_income');
+
+        if($families=Familycondition::where('family_income','<',$max_income)
+            ->where('family_income','>',$min_income)->get())
+        {
+            return redirect('family/income_search')->with('families',$families);
+        }
+        else
+        {
+            return redirect('failure')->withErrors('没有这样的家庭');
+
+        }
+
     }
 }

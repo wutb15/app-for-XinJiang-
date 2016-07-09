@@ -16,6 +16,7 @@ class CreateFamilyconditionsTable extends Migration
             $table->increments('family_id');
             $table->string('family_name',60)->default('');
             $table->string('family_location')->default('');
+            $table->decimal('family_income')->default(0);
         });
     }
 
