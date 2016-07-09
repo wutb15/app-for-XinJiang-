@@ -49,7 +49,7 @@
     </style>
 </head>
 <body id="app-layout">
-<nav class="navbar navbar-default navbar-static-top" role="navigation">
+<nav class="navbar navbar-default navbar-static-top navbar-inverse" role="navigation">
     <div class="container">
         <div class="navbar-header">
 
