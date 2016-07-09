@@ -32,17 +32,16 @@
             margin-right: 6px;
         }
         .carousel {
-            height:100px;
+            height:300px;
             background-color:#000;
             margin-bottom:60px;
         }
         .carousel.item{
-            height:100px;
+            height:300px;
             background-color:#000;
         }
         .carousel img{
             width:100%;
-            height:25%;
         }
         #summary-container .col-md-4{
             text-align: center;
