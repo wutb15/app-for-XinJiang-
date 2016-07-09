@@ -12,25 +12,40 @@
                     {!!csrf_field()!!}
 
                     <div class="form-group">
-                        <label for="Idcardid">身份证号 </label>
+                        <label for="Idcardid" class="col-md-4 control-label">身份证号 </label>
                         <div class="col-md-6">
                             <input type="text" id="Idcardid" name="Idcardid" value="{{$individual->Idcardid}}" class="form-control" readonly>
+                            @if ($errors->has('Idcardid'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('Idcardid') }}</strong>
+                                    </span>
+                            @endif
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="name">姓名</label>
+                        <label for="name" class="col-md-4 control-label">姓名</label>
                         <div class="col-md-6">
                         <input type="text" id="name" name="name" value="{{$individual->name}}" class="form-control" readonly>
+                            @if ($errors->has('name'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                            @endif
                         </div>
                      </div>
                     <div class="form-group">
-                        <label for="income">年收入</label>
+                        <label for="income" class="col-md-4 control-label">年收入</label>
                         <div class="col-md-6">
                         <input type="text" id="income" name="income" value="{{$individual->income}}" class="form-control" readonly>
+                            @if ($errors->has('income'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('income') }}</strong>
+                                </span>
+                            @endif
                         </div>
                     </div>
                      <div class="form-group">
-                        <label for="sex">性别</label>
+                        <label for="sex" class="col-md-4 control-label">性别</label>
                         <div class="col-md-6">
                         <select class="form-control" name="sex" id="sex" disabled>
                             @if($individual->sex==0)
@@ -45,7 +60,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="date">生日</label>
+                        <label for="date" class="col-md-4 control-label">生日</label>
 
                         <div class="col-md-6 date">
                             <div class="input-group input-append date" id="datePicker">
@@ -57,12 +72,12 @@
                         </div>
 
                 <div class="form-group">
-                        <div class="col-md-6">
+                        <div class="col-md-4 col-md-offset-5">
                         <input type="submit" id="submit" name="submit" value="提交更改" class="btn-primary form-control">
                         </div>
                     </div>
                         <div class="form-group">
-                            <div class="col-md-6">
+                            <div class="col-md-4 col-md-offset-5">
                         <input type="button" id="edit" name="edit" value="编辑文档" class="btn-primary form-control" onclick="enableEdit()">
                             </div>
                         </div>
@@ -70,12 +85,12 @@
                 </div>
              </div>
              </div>
-                <div class="form-group">
+                <div class="row">
 
                      <form role="form" method="post" action="{{route('individual.delete',['id'=>$individual->Idcardid])}}">
-                     <div class="col-md-6">
-                     <input type="submit" id="delete" name="delete" value="删除此文档" class="btn-warning form-control">
-                         </div>
+                        <div class="col-md-6 col-md-offset-4">
+                            <input type="submit" id="delete" name="delete" value="删除此文档" class="btn-danger form-control">
+                        </div>
                      </form>
                 </div>
 
