@@ -4,23 +4,20 @@
     <div class="container">
         <form role="form" method="post" action="{{url('individual/update')}}">
             {!!csrf_field()!!}
-            <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 col-offset-3">
                     <label for="Idcardid">身份证号 </label>
                     <input type="text" id="Idcardid" name="Idcardid" value="{{$individual->Idcardid}}" class="form-control" readonly>
 
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 col-offset-3">
                     <label for="name">姓名</label>
                     <input type="text" id="name" name="name" value="{{$individual->name}}" class="form-control" readonly>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 col-offset-3">
                     <label for="income">年收入</label>
                     <input type="text" id="income" name="income" value="{{$individual->income}}" class="form-control" readonly>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 col-offset-3">
                     <label for="sex">性别</label>
                     <select class="form-control" name="sex" id="sex" disabled>
                         @if($individual->sex==0)
@@ -33,8 +30,6 @@
 
                     </select>
                 </div>
-            </div>
-            <div class="row">
                 <div class="col-md-6">
                     <label for="date">生日</label>
                 </div>
@@ -45,22 +40,17 @@
                         </div>
                     </div>
 
-            </div>
-            <div class="row">
                 <input type="hidden" name="family_id" value="{{$individual->family_id}}">
-            </div>
 
-            <div class="row">
-                <div class="col-md-6">
+
+                <div class="col-md-6 col-offset-3">
                     <input type="submit" id="submit" name="submit" value="提交更改" class="btn-primary form-control">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 col-offset-3">
                     <input type="button" id="edit" name="edit" value="编辑文档" class="btn-primary form-control" onclick="enableEdit()">
                 </div>
-            </div>
         </form>
-        <div class="row">
-             <div class="col-md-6">
+             <div class="col-md-6 col-offset-3">
 
                  <form role="form" method="post" action="{{route('individual.delete',['id'=>$individual->Idcardid])}}">
 
@@ -68,8 +58,6 @@
 
                  </form>
              </div>
-
-        </div>
 
     </div>
    <script>
