@@ -24,12 +24,14 @@
                             </div>
 
                         </div>
+                        <input type="hidden" id="method" name="method" value="accurate">
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <input type="submit" class="btn btn-primary" id="submit_id"  value="搜索">
                             </div>
 
                         </div>
+
 
 
                      </form>
@@ -42,7 +44,7 @@
             <div class="panel panel-default" style="margin-bottom: 60px">
                 <div class="panel-heading">范围搜索</div>
                 <div class="panel-body">
-                    <form role="form" action="{{url('family/income_search')}}" method="post">
+                    <form role="form" action="{{url('family/search')}}" method="post">
                         {!!csrf_field()!!}
                         <div class="form-group {{$errors->has('max_income') ? 'has-error':''}}">
                             <label for="max_income" class="col-md-4 control-label">上限年收入(整数)</label>
@@ -67,6 +69,7 @@
                                 </span>
                             @endif
                         </div>
+                        <input type="hidden" id="method" name="method" value="range_income">
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <input type="submit" class="btn btn-primary" id="submit_id" value="搜索">

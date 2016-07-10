@@ -72,7 +72,6 @@ Route::get('success',function (){
     return view('success');
 });
 
-Route::any('family/income_search','FamilyController@income_search');
 
 
 

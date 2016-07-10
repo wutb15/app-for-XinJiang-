@@ -84,8 +84,24 @@ class FamilyController extends Controller
     public function show($id){
         return view('family.show')->with('family',Familycondition::find($id));
     }//一个家庭信息，外加成员简略信息如身份证
+    public function search(Request $request)
+    {
+        if($request->input('method')=='accurate')
+        {
+            return $this->accurate_search($request);
+        }
+        else if($request->input('method')=='range_income')
+        {
+            return $this->income_search($request);
+        }
+        else
+        {
+            return redirect('failure')->withErrors('不存在');
+        }
 
-    public function search(Request $request){
+    }
+
+    public function accurate_search(Request $request){
         $this->validate($request, [
             'family_id'=>'required|numeric'
         ]);
@@ -109,10 +125,12 @@ class FamilyController extends Controller
         $max_income=$request->get('max_income');
         $min_income=$request->get('min_income');
 
-        if($families=Familycondition::where('family_income','<',$max_income)
-            ->where('family_income','>',$min_income)->get())
+        if(Familycondition::where('family_income','<',$max_income)
+            ->where('family_income','>',$min_income)->count())
         {
-            return redirect('family/income_search')->with('families',$families);
+            $families=Familycondition::where('family_income','<',$max_income)
+                ->where('family_income','>',$min_income)->get();
+            return view('family.income_show')->with('families',$families);
         }
         else
         {
